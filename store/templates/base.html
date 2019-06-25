@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {% block title %} Welcome to Django E-commerce Store {% endblock %}</title>
+</head>
+<body>
+{% block content%}
+{% if request.user.is_authenticated %}
+    <h4>
+        Welcome, {% if request.user.first_name %}
+        {{request.user.first_name}}
+        {%else%}
+        {{request.user.username}}
+        {% endif %}!<a href="{% url 'auth_logout' %}">Log Out</a>
+    </h4>
+{% else %}
+<h4>Welcome, Unknown person! Woudl you like to <a href="{% url 'auth_login' %}">Log In? </a> </h4>
+{% endif %}
+Welcome to the Django Ecommerce store !!! There are {{count}} books in store. User Location : {{request.session.location}}
+{% endblock %}
+</body>
+</html>

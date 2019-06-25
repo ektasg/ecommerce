@@ -19,5 +19,6 @@ from django.conf.urls import include, url
 
 urlpatterns = [
     url(r'^store/', include('store.urls'), name='store'),
+    url(r'^accounts/', include('registration.backends.default.urls')),
     path('admin/', admin.site.urls),
 ]
