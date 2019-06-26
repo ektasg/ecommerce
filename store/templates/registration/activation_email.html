@@ -1,31 +1,31 @@
-{% extends "base.html" %}
-
-{% block title %} {{ site.name }} {% endblock %}
 {% block content %}
-<p>
+<div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 loginbox">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <div style="padding-top:30px" class="panel-body">
+                <p>
+                You have asked to register an account at
+                {{ site.name }}.  If this wasn't you, please ignore this email
+                and your address will be removed from our records.
+                </p>
+                <p>
+                    To activate this account, please click the following link within the next
+                    {{ expiration_days }} days:
+                </p>
+                <p>
+                    <a href="http://{{site.domain}}{% url 'registration_activate' activation_key %}">
+                        {{site.domain}}{% url 'registration_activate' activation_key %}
+                    </a>
+                </p>
+                <p>
+                     {{ site.name }}
+                    Sincerely,
+                    {{ site.name }} Management
 
-    You have asked to register an account at
-    {{ site.name }}.  If this wasn't you, please ignore this email
-    and your address will be removed from our records.
-
-</p>
-<p>
-
-    To activate this account, please click the following link within the next
-    {{ expiration_days }} days:
-
-</p>
-
-<p>
-    <a href="http://{{site.domain}}{% url 'registration_activate' activation_key %}">
-        {{site.domain}}{% url 'registration_activate' activation_key %}
-    </a>
-</p>
-<p>
-     {{ site.name }}
-    Sincerely,
-    {{ site.name }} Management
-
-</p>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
