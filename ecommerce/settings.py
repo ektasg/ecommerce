@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'compressor',
     'store',
     'registration',
 ]
@@ -120,6 +121,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/') # root of all static files. In production environment, different apps will have differnt static folders
+COMPRESS_ENABLED = True   # forcing compressor to be ON
+STATICFILES_FINDERS={
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+}
 
 # Registration
 ACCOUNT_ACTIVATION_DAYS = 7
