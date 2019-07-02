@@ -85,7 +85,6 @@ def cart(request):
         count = 0
         if cart:
             orders = BookOrder.objects.filter(cart=cart[0])
-
             for order in orders:
                 total += (order.book.price * order.quantity)
                 count += order.quantity
@@ -108,7 +107,7 @@ def cart(request):
 def checkout(request,processor):
     if request.user.is_authenticated:
         cart = Cart.objects.filter(user=request.user.id, active = True)
-        print(cart.id, "in checkout")
+        print(cart, "in checkout")
         orders = BookOrder.objects.filter(cart=cart[0])
         if processor == "paypal":
             redirect_url = checkout_paypal(request,cart,orders)
@@ -173,9 +172,10 @@ def order_error(request):
 def process_order(request,processor):
     if request.user.is_authenticated:
         if processor == "paypal":
-            payment_id = request.GET.get('payment_id')
+            payment_id = request.GET.get('paymentId')
+            print('payment_id', payment_id)
             cart= Cart.objects.filter(payment_id = payment_id)
-            print(cart.id, "in process_order")
+            print(cart, "in process_order")
             orders = BookOrder.objects.filter(cart=cart[0])
             total =0
             for order in orders:
