@@ -137,11 +137,13 @@ def checkout_paypal(request, cart, orders):
             "client_id":"ATWUD2TQ_g1HrFGi8bIkAkrvavJKUSOKpF_oNG5DdQxBLt-rMKmgPrS9McU6rkDjBwA9Tjaq3DgZZw5X",
             "client_secret": "EJx741AAWr9PxN110wu0hP60LB7Wdz8diiuBpObb8p7YfC73egLWAiCkgQJ8Ci34PxTJ3X-_9uHTiFuo"
         })
+        print("host:", request.get_host())
+        host = request.get_host()
         payment = paypalrestsdk.Payment({
             "intent": "sale",
             "payer": {"payment_method": "paypal"},
-            "redirect_urls": {"return_url":"http://localhost:8000/store/process/paypal",
-                             "cancel_url":"http://localhost:8000/store"},
+            "redirect_urls": {"return_url":"http://"+host+"/store/process/paypal",
+                             "cancel_url":"http://"+host+"/store"},
             "transactions":[{
                "item_list":{"items":items},
                 "amount": {

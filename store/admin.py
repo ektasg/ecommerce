@@ -28,3 +28,5 @@ admin.site.register(Author, AuthorAdmin)
 admin.site.register(Cart, CartAdmin)
 admin.site.register(BookOrder, BookOrderAdmin)
 admin.site.register(Review, ReviewAdmin)
+
+admin.site.site_url = "/store"
