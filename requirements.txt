@@ -9,7 +9,7 @@ django-compressor==2.3
 django-registration-redux==2.6
 idna==2.8
 paypalrestsdk==1.13.1
-Pillow==6.0.0
+Pillow==9.3.0
 pycparser==2.19
 pyOpenSSL==19.0.0
 pytz==2019.1
